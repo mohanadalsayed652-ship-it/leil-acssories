@@ -1,0 +1,673 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>متجر ليل | LEIL Accessories Shop</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="theme.css">
+    <script defer src="theme.js"></script>
+    
+    <style>
+        /* --- 1. الإعدادات العامة وتصفير الهوامش --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        :root {
+            --primary-gold: #a88a44;
+            --hover-gold: #c5a45b;
+            --dark-brown: #2d2219;
+            --matte-black: #1a1a1a;
+            --light-bg: #faf8f5;
+            --white: #ffffff;
+            --grey-border: #eaeaea;
+            --text-color: #4a4a4a;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s ease;
+        }
+
+        /* --- 2. القائمة العلوية (Header & Navbar) --- */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 8%;
+            background-color: var(--white);
+            border-bottom: 1px solid var(--grey-border);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+        }
+
+        .logo {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .brand-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--primary-gold);
+            letter-spacing: 3px;
+            line-height: 1.2;
+        }
+
+        .brand-sub {
+            font-size: 10px;
+            color: #777;
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            font-weight: 400;
+            color: var(--text-color);
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--primary-gold);
+        }
+
+        .nav-icons {
+            display: flex;
+            gap: 20px;
+            font-size: 18px;
+            color: var(--matte-black);
+            cursor: pointer;
+        }
+
+        .nav-icons i:hover {
+            color: var(--primary-gold);
+        }
+
+        /* --- 3. عنوان الصفحة البسيط (Page Banner) --- */
+        .shop-banner {
+            background-color: var(--dark-brown);
+            color: var(--white);
+            text-align: center;
+            padding: 40px 20px;
+            margin-bottom: 30px;
+        }
+
+        .shop-banner h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            color: var(--primary-gold);
+            margin-bottom: 10px;
+        }
+
+        .shop-banner p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        /* --- 4. الهيكل الأساسي لصفحة التسوق (Shop Container) --- */
+        .shop-container {
+            display: flex;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 5% 80px 5%;
+            gap: 30px;
+        }
+
+        /* الفلاتر الجانبية (Sidebar Filters) */
+        .sidebar {
+            width: 250px;
+            flex-shrink: 0;
+            background-color: var(--white);
+            padding: 25px;
+            border-radius: 8px;
+            border: 1px solid var(--grey-border);
+            align-self: flex-start;
+        }
+
+        .filter-section {
+            margin-bottom: 30px;
+        }
+
+        .filter-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--dark-brown);
+            margin-bottom: 15px;
+            border-bottom: 2px solid var(--primary-gold);
+            padding-bottom: 5px;
+            display: inline-block;
+        }
+
+        .filter-list {
+            list-style: none;
+        }
+
+        .filter-list li {
+            margin-bottom: 10px;
+        }
+
+        .filter-list a {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.95rem;
+            color: var(--text-color);
+        }
+
+        .filter-list a:hover {
+            color: var(--primary-gold);
+            padding-right: 5px;
+        }
+
+        .filter-list span.count {
+            color: #999;
+            font-size: 0.85rem;
+        }
+
+        /* شبكة المنتجات (Product Grid Area) */
+        .products-area {
+            flex-grow: 1;
+        }
+
+        /* البار العلوي للمنتجات (الترتيب والنتائج) */
+        .products-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            background-color: var(--white);
+            padding: 15px 20px;
+            border-radius: 8px;
+            border: 1px solid var(--grey-border);
+        }
+
+        .results-count {
+            font-size: 0.95rem;
+        }
+
+        .sort-select {
+            padding: 8px 15px;
+            border: 1px solid var(--grey-border);
+            border-radius: 4px;
+            font-size: 0.9rem;
+            color: var(--text-color);
+            background-color: var(--white);
+            outline: none;
+            cursor: pointer;
+        }
+
+        /* كروت المنتجات (Product Cards Grid) */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .product-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid var(--grey-border);
+            transition: all 0.3s ease;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
+
+        .badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: var(--primary-gold);
+            color: var(--white);
+            padding: 3px 10px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            border-radius: 3px;
+            z-index: 10;
+        }
+
+        .product-img-wrapper {
+            position: relative;
+            width: 100%;
+            height: 280px;
+            overflow: hidden;
+            background-color: #f9f9f9;
+        }
+
+        .product-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .product-card:hover .product-img-wrapper img {
+            transform: scale(1.08);
+        }
+
+        /* أيقونة الأمنيات المباشرة على الصورة */
+        .wishlist-btn {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background-color: var(--white);
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .wishlist-btn:hover {
+            background-color: #ff4757;
+            color: var(--white);
+        }
+
+        .product-info {
+            padding: 20px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .product-category {
+            font-size: 0.8rem;
+            color: #999;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+
+        .product-title {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--matte-black);
+            margin-bottom: 8px;
+            height: 48px; /* لتثبيت المسافات لو الاسم طويل */
+            display: -webkit-box;
+            line-clamp: 2;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .product-price {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--primary-gold);
+            margin-bottom: 15px;
+        }
+
+        .add-to-cart {
+            background-color: var(--dark-brown);
+            color: var(--white);
+            border: none;
+            padding: 10px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: auto; /* يثبّت الزرار بالأسفل دائمًا */
+        }
+
+        .add-to-cart:hover {
+            background-color: var(--primary-gold);
+        }
+
+        /* --- 5. توافق التصميم مع الهواتف الذكية (Responsive) --- */
+        @media (max-width: 992px) {
+            .shop-container {
+                flex-direction: column;
+            }
+            .sidebar {
+                width: 100%;
+            }
+            .navbar {
+                padding: 15px 5%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+            .nav-links {
+                gap: 15px;
+            }
+            .shop-banner h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="logo">
+            <span class="brand-name">LEIL</span>
+            <span class="brand-sub">ACCESSORIES</span>
+        </div>
+        <nav class="nav-links">
+            <a href="main page.html">الرئيسية</a>
+            <a href="#" class="active">تسوق</a>
+            <a href="#">مجموعاتنا</a>
+            <a href="about.html">من نحن</a>
+            <a href="#">اتصل بنا</a>
+        </nav>
+        <div class="nav-icons">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <i class="fa-regular fa-heart"></i>
+            <i class="fa-solid fa-bag-shopping"></i>
+        </div>
+    </header>
+
+    <section class="shop-banner">
+        <h1>متجر ليل للأكسسوارات</h1>
+        <p>بريق الفخامة والتفاصيل التي تبرز أناقتكِ وأناقتك الفريدة</p>
+    </section>
+
+    <main class="shop-container">
+        
+        <aside class="sidebar">
+            <div class="filter-section">
+                <h3 class="filter-title">التصنيفات</h3>
+                <ul class="filter-list">
+                    <li><a href="#">الكل <span class="count">(42)</span></a></li>
+                    <li><a href="#">مجموعات النساء <span class="count">(18)</span></a></li>
+                    <li><a href="#">مجموعات الرجال <span class="count">(12)</span></a></li>
+                    <li><a href="#">الأكثر مبيعاً <span class="count">(8)</span></a></li>
+                    <li><a href="#">علب الهدايا <span class="count">(4)</span></a></li>
+                </ul>
+            </div>
+
+            <div class="filter-section">
+                <h3 class="filter-title">الفئة السعرية</h3>
+                <ul class="filter-list">
+                    <li><a href="#">أقل من 200 ج.م</a></li>
+                    <li><a href="#">200 ج.م - 500 ج.م</a></li>
+                    <li><a href="#">أكثر من 500 ج.م</a></li>
+                </ul>
+            </div>
+        </aside>
+
+        <section class="products-area">
+            
+            <div class="products-header">
+                <div class="results-count">عرض 1-8 من أصل 42 منتج</div>
+                <div class="sort-box">
+                    <select class="sort-select">
+                        <option value="popular">الأكثر شعبية</option>
+                        <option value="new">وصل حديثاً</option>
+                        <option value="low-high">السعر: من الأقل إلى الأعلى</option>
+                        <option value="high-low">السعر: من الأعلى إلى الأقل</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="product-grid">
+                
+                <article class="product-card">
+                    <span class="badge">الأكثر مبيعاً</span>
+                    <div class="wishlist-btn"><i class="fa-regular fa-heart"></i></div>
+                    <div class="product-img-wrapper">
+                        <img src="D:\html project\leil\images\Gemini_Generated_Image_c9al1kc9al1kc9al.png" alt="سوار ذهبي ناعم">
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category">مجموعة النساء</span>
+                        <h3 class="product-title">سوار ذهبي مبروم بتفاصيل لامعة</h3>
+                        <div class="product-price">290 ج.م</div>
+                            <a href="cheackout.html" class="add-to-cart">
+                                <i class="fa-solid fa-cart-plus"></i> اشتري الآن
+                            </a>
+                            </div>
+                            </article>
+                     <article>       
+                    <span class="badge">جديد</span>
+                    <div class="wishlist-btn"><i class="fa-regular fa-heart"></i></div>
+                    <div class="product-img-wrapper">
+                        <img src="D:\html project\leil\images\Gemini_Generated_Image_n61bxyn61bxyn61b.png" alt="خاتم فضي">
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category">مجموعة النساء</span>
+                        <h3 class="product-title">خاتم فضي عيار 925 </h3>
+                        <div class="product-price">250 ج.م</div>
+                        
+                            <a href="cheackout.html" class="add-to-cart">
+                                <i class="fa-solid fa-cart-plus"></i> اشتري الآن
+                            </a>
+                        
+                    </div>
+                </article>
+
+                <article class="product-card">
+                    <div class="wishlist-btn"><i class="fa-regular fa-heart"></i></div>
+                    <div class="product-img-wrapper">
+                        <img src="D:\html project\leil\images\Gemini_Generated_Image_n61bxyn61bxyn61b.png" alt="ساعة كلاسيكية للرجال">
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category">مجموعة الرجال</span>
+                        <h3 class="product-title">ساعة يد كلاسيكية بحزام جلدي بني</h3>
+                        <div class="product-price">300 ج.م</div>
+                        <a href="cheackout.html" class="add-to-cart">
+                                <i class="fa-solid fa-cart-plus"></i> اشتري الآن
+                            </a>
+                    </div>
+                </article>
+
+                <article class="product-card">
+                    <span class="badge">مميز</span>
+                    <div class="wishlist-btn"><i class="fa-regular fa-heart"></i></div>
+                    <div class="product-img-wrapper">
+                        <img src="D:\html project\leil\images\Gemini_Generated_Image_n61bxyn61bxyn61b.png" alt="علبة هدايا فاخرة">
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category">علب هدايا</span>
+                        <h3 class="product-title">مجموعة صندوق هدايا ليل المخملية الفاخرة</h3>
+                        <div class="product-price">150 ج.م</div>
+                       <a href="cheackout.html" class="add-to-cart">
+                                <i class="fa-solid fa-cart-plus"></i> اشتري الآن
+                            </a>
+                    </div>
+                </article>
+                <article class="product-card">
+                <span class="badge">جديد</span> 
+                <div class="wishlist-btn"><i class="fa-regular fa-heart"></i></div>
+                <div class="product-img-wrapper">
+                    <img src="D:\html project\leil\images\Gemini_Generated_Image_n61bxyn61bxyn61b.png" alt="اسم المنتج">
+                </div>
+                <div class="product-info">
+                    <span class="product-category">الفئة (مثال: نسائي)</span>
+                    <h3 class="product-title">اسم المنتج هنا بشكل واضح</h3>
+                    <div class="product-price">السعر ج.م</div>
+                   <a href="cheackout.html" class="add-to-cart">
+                                <i class="fa-solid fa-cart-plus"></i> اشتري الآن
+                            </a>
+                </div>
+            </article>
+            <article class="product-card">
+                <span class="badge">جديد</span> 
+                <div class="wishlist-btn"><i class="fa-regular fa-heart"></i></div>
+                <div class="product-img-wrapper">
+                    <img src="D:\html project\leil\images\Gemini_Generated_Image_n61bxyn61bxyn61b.png" alt="اسم المنتج">
+                </div>
+                <div class="product-info">
+                    <span class="product-category">الفئة (مثال: نسائي)</span>
+                    <h3 class="product-title">اسم المنتج هنا بشكل واضح</h3>
+                    <div class="product-price">السعر ج.م</div>
+                    <a href="cheackout.html" class="add-to-cart">
+                                <i class="fa-solid fa-cart-plus"></i> اشتري الآن
+                            </a>
+                </div>
+            </article>
+            <article class="product-card">
+                <span class="badge">جديد</span> 
+                <div class="wishlist-btn"><i class="fa-regular fa-heart"></i></div>
+                <div class="product-img-wrapper">
+                    <img src="D:\html project\leil\images\Gemini_Generated_Image_n61bxyn61bxyn61b.png" alt="اسم المنتج">
+                </div>
+                <div class="product-info">
+                    <span class="product-category">الفئة (مثال: نسائي)</span>
+                    <h3 class="product-title">اسم المنتج هنا بشكل واضح</h3>
+                    <div class="product-price">السعر ج.م</div>
+                    <a href="cheackout.html" class="add-to-cart">
+                                <i class="fa-solid fa-cart-plus"></i> اشتري الآن
+                            </a>
+                </div>
+            </article>
+            <article class="product-card">
+                <span class="badge">جديد</span> 
+                <div class="wishlist-btn"><i class="fa-regular fa-heart"></i></div>
+                <div class="product-img-wrapper">
+                    <img src="D:\html project\leil\images\Gemini_Generated_Image_n61bxyn61bxyn61b.png" alt="اسم المنتج">
+                </div>
+                <div class="product-info">
+                    <span class="product-category">الفئة (مثال: نسائي)</span>
+                    <h3 class="product-title">اسم المنتج هنا بشكل واضح</h3>
+                    <div class="product-price">السعر ج.م</div>
+                    <a href="cheackout.html" class="add-to-cart">
+                                <i class="fa-solid fa-cart-plus"></i> اشتري الآن
+                            </a>
+                </div>
+            </article>
+            
+             <article class="product-card">
+                <span class="badge">جديد</span> 
+                <div class="wishlist-btn"><i class="fa-regular fa-heart"></i></div>
+                <div class="product-img-wrapper">
+                    <img src="D:\html project\leil\images\Gemini_Generated_Image_n61bxyn61bxyn61b.png" alt="اسم المنتج">
+                </div>
+                <div class="product-info">
+                    <span class="product-category">الفئة (مثال: نسائي)</span>
+                    <h3 class="product-title">اسم المنتج هنا بشكل واضح</h3>
+                    <div class="product-price">السعر ج.م</div>
+                    <a href="cheackout.html" class="add-to-cart">
+                                <i class="fa-solid fa-cart-plus"></i> اشتري الآن
+                            </a>
+                </div>
+            </article>
+
+             <article class="product-card">
+                <span class="badge">جديد</span> 
+                <div class="wishlist-btn"><i class="fa-regular fa-heart"></i></div>
+                <div class="product-img-wrapper">
+                    <img src="D:\html project\leil\images\Gemini_Generated_Image_n61bxyn61bxyn61b.png" alt="اسم المنتج">
+                </div>
+                <div class="product-info">
+                    <span class="product-category">الفئة (مثال: نسائي)</span>
+                    <h3 class="product-title">اسم المنتج هنا بشكل واضح</h3>
+                    <div class="product-price">السعر ج.م</div>
+                    <a href="cheackout.html" class="add-to-cart">
+                                <i class="fa-solid fa-cart-plus"></i> اشتري الآن
+                            </a>
+                </div>
+            </article>
+
+             <article class="product-card">
+                <span class="badge">جديد</span> 
+                <div class="wishlist-btn"><i class="fa-regular fa-heart"></i></div>
+                <div class="product-img-wrapper">
+                    <img src="D:\html project\leil\images\Gemini_Generated_Image_n61bxyn61bxyn61b.png" alt="اسم المنتج">
+                </div>
+                <div class="product-info">
+                    <span class="product-category">الفئة (مثال: نسائي)</span>
+                    <h3 class="product-title">اسم المنتج هنا بشكل واضح</h3>
+                    <div class="product-price">السعر ج.م</div>
+                    <a href="cheackout.html" class="add-to-cart">
+                                <i class="fa-solid fa-cart-plus"></i> اشتري الآن
+                            </a>
+                </div>
+            </article>
+
+             <article class="product-card">
+                <span class="badge">جديد</span> 
+                <div class="wishlist-btn"><i class="fa-regular fa-heart"></i></div>
+                <div class="product-img-wrapper">
+                    <img src="D:\html project\leil\images\Gemini_Generated_Image_n61bxyn61bxyn61b.png" alt="اسم المنتج">
+                </div>
+                <div class="product-info">
+                    <span class="product-category">الفئة (مثال: نسائي)</span>
+                    <h3 class="product-title">اسم المنتج هنا بشكل واضح</h3>
+                    <div class="product-price">السعر ج.م</div>
+                    <a href="cheackout.html" class="add-to-cart">
+                                <i class="fa-solid fa-cart-plus"></i> اشتري الآن
+                            </a>
+                </div>
+            </article>
+
+             <article class="product-card">
+                <span class="badge">جديد</span> 
+                <div class="wishlist-btn"><i class="fa-regular fa-heart"></i></div>
+                <div class="product-img-wrapper">
+                    <img src="D:\html project\leil\images\Gemini_Generated_Image_n61bxyn61bxyn61b.png" alt="اسم المنتج">
+                </div>
+                <div class="product-info">
+                    <span class="product-category">الفئة (مثال: نسائي)</span>
+                    <h3 class="product-title">اسم المنتج هنا بشكل واضح</h3>
+                    <div class="product-price">السعر ج.م</div>
+                    <a href="cheackout.html" class="add-to-cart">
+                                <i class="fa-solid fa-cart-plus"></i> اشتري الآن
+                            </a>
+                </div>
+            </article>
+
+             <article class="product-card">
+                <span class="badge">جديد</span> 
+                <div class="wishlist-btn"><i class="fa-regular fa-heart"></i></div>
+                <div class="product-img-wrapper">
+                    <img src="D:\html project\leil\images\Gemini_Generated_Image_n61bxyn61bxyn61b.png" alt="اسم المنتج">
+                </div>
+                <div class="product-info">
+                    <span class="product-category">الفئة (مثال: نسائي)</span>
+                    <h3 class="product-title">اسم المنتج هنا بشكل واضح</h3>
+                    <div class="product-price">السعر ج.م</div>
+                    <a href="cheackout.html" class="add-to-cart">
+                                <i class="fa-solid fa-cart-plus"></i> اشتري الآن
+                            </a>
+                </div>
+            </article>
+
+            
+            </div>
+        </section>
+
+    </main>
+
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مجموعة النساء | LEIL Accessories</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="theme.css">
+    <script defer src="theme.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Cairo', sans-serif; }
+        body { background-color: #faf8f5; color: #4a4a4a; }
+
+        /* Header Style */
+        .page-header { 
+            background: #2d2219; 
+            color: #a88a44; 
+            padding: 60px 20px; 
+            text-align: center; 
+        }
+        .page-header h1 { font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-bottom: 10px; }
+
+        /* Grid Layout */
+        .collection-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            gap: 30px; 
+            max-width: 1200px; 
+            margin: 50px auto; 
+            padding: 0 20px; 
+        }
+
+        /* Category Card */
+        .category-card { 
+            background: #fff; 
+            border-radius: 15px; 
+            overflow: hidden; 
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05); 
+            transition: 0.3s; 
+            text-align: center;
+            padding-bottom: 20px;
+        }
+        .category-card:hover { transform: translateY(-10px); }
+        .category-card img { width: 100%; height: 350px; object-fit: cover; }
+        .category-card h3 { margin: 20px 0 10px; color: #2d2219; font-family: 'Playfair Display', serif; }
+        .shop-btn { 
+            display: inline-block; 
+            margin-top: 15px; 
+            padding: 10px 25px; 
+            background: #a88a44; 
+            color: #fff; 
+            text-decoration: none; 
+            border-radius: 5px; 
+            transition: 0.3s; 
+        }
+        .shop-btn:hover { background: #c5a45b; }
+    </style>
+</head>
+<body>
+
+    <header class="page-header">
+        <h1>تشكيلة النساء</h1>
+        <p>اكتشفي بريق الأنوثة في كل قطعة من ليل</p>
+    </header>
+
+    <main class="collection-grid">
+        <!-- التصنيف 1 -->
+        <div class="category-card">
+            <img src="D:\html project\leil\images\Gemini_Generated_Image_n61bxyn61bxyn61b.png" alt="قلائد">
+            <h3>القلائد الفاخرة</h3>
+            <p>تصاميم رقيقة تناسب كل إطلالاتك</p>
+            <a href="cheackout.html" class="shop-btn">اشتري الآن</a>
+        </div>
+
+        <!-- التصنيف 2 -->
+        <div class="category-card">
+            <img src="D:\html project\leil\images\Gemini_Generated_Image_n61bxyn61bxyn61b.png" alt="أساور">
+            <h3>الأساور الناعمة</h3>
+            <p>لمسة من السحر في معصمك</p>
+            <a href="cheackout.html" class="shop-btn">اشتري الآن</a>
+        </div>
+
+        <!-- التصنيف 3 -->
+        <div class="category-card">
+            <img src="D:\html project\leil\images\Gemini_Generated_Image_n61bxyn61bxyn61b.png" alt="خواتم">
+            <h3>خواتم الزيركون</h3>
+            <p>فخامة تتحدث عن ذوقك الرفيع</p>
+            <a href="cheackout.html" class="shop-btn">اشتري الآن</a>
+        </div>
+    </main>
+
+</body>
+</html>

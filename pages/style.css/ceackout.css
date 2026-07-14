@@ -1,0 +1,78 @@
+<style>
+    /* الخطوط والألوان العامة */
+    @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600&family=Playfair+Display:wght@700&display=swap');
+    
+    body { 
+        background-color: #faf8f5; 
+        font-family: 'Cairo', sans-serif; 
+        color: #333; 
+        display: flex; 
+        justify-content: center; 
+        align-items: center; 
+        min-height: 100vh; 
+        margin: 0;
+    }
+
+    /* حاوية الطلب */
+    .checkout-container { 
+        width: 90%; 
+        max-width: 500px; 
+        background: #fff; 
+        padding: 40px; 
+        border-radius: 15px; 
+        border: 1px solid #e0d8c3;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.08); 
+    }
+
+    /* العنوان */
+    h2 { 
+        font-family: 'Playfair Display', serif; 
+        color: #2d2219; 
+        text-align: center; 
+        margin-bottom: 30px; 
+        border-bottom: 2px solid #a88a44; 
+        display: inline-block; 
+        width: 100%; 
+        padding-bottom: 10px;
+    }
+
+    /* الحقول */
+    .form-group { margin-bottom: 20px; }
+    label { font-weight: 600; color: #2d2219; margin-bottom: 8px; display: block; }
+    
+    input, select, textarea { 
+        width: 100%; 
+        padding: 12px; 
+        border: 1px solid #dcdcdc; 
+        border-radius: 8px; 
+        font-size: 1rem; 
+        transition: 0.3s;
+    }
+    
+    /* تأثير التركيز عند الكتابة */
+    input:focus, textarea:focus, select:focus { 
+        border-color: #a88a44; 
+        outline: none; 
+        box-shadow: 0 0 8px rgba(168, 138, 68, 0.2); 
+    }
+
+    /* زر الإرسال الفخم */
+    .submit-btn { 
+        width: 100%; 
+        padding: 15px; 
+        background: #2d2219; 
+        color: #a88a44; 
+        border: 2px solid #a88a44; 
+        border-radius: 8px; 
+        font-size: 1.1rem; 
+        font-weight: 700; 
+        cursor: pointer; 
+        transition: 0.4s; 
+        margin-top: 10px;
+    }
+    
+    .submit-btn:hover { 
+        background: #a88a44; 
+        color: #fff; 
+    }
+</style>

@@ -1,0 +1,132 @@
+<script>
+    function sendToWhatsApp(event) {
+        event.preventDefault(); // منع الإرسال التقليدي
+
+        // جلب البيانات من النموذج
+        const name = document.getElementById('name').value;
+        const phone = document.getElementById('phone').value;
+        const address = document.getElementById('address').value;
+        const payment = document.getElementById('payment').value;
+
+        // صياغة الرسالة
+        const message = `مرحباً، أريد إتمام طلب جديد:%0A` +
+                        `الاسم: ${name}%0A` +
+                        `رقم الهاتف: ${phone}%0A` +
+                        `العنوان: ${address}%0A` +
+                        `طريقة الدفع: ${payment}`;
+
+        // رابط الواتساب (ضع رقم هاتفك هنا بدلاً من 201xxxxxxxxx)
+        const whatsappUrl = `https://wa.me/201066472320?text=${message}`;
+
+        // فتح الرابط
+        window.open(whatsappUrl, '_blank');
+    }
+</script>
+
+<div class="checkout-container">
+    <h2>إتمام طلبك</h2>
+    <form onsubmit="sendToWhatsApp(event)">
+        <div class="form-group">
+            <label>الاسم بالكامل</label>
+            <input type="text" id="name" required placeholder="أدخل اسمك الكريم">
+        </div>
+        
+        <div class="form-group">
+            <label>رقم الهاتف</label>
+            <input type="tel" id="phone" required placeholder="01xxxxxxxxx">
+        </div>
+        
+        <div class="form-group">
+            <label>العنوان بالتفصيل</label>
+            <textarea id="address" rows="3" required placeholder="المحافظة - المنطقة - الشارع"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label>طريقة الدفع</label>
+            <select id="payment">
+                <option value="cash">الدفع عند الاستلام</option>
+                <option value="vodafone">فودافون كاش</option>
+            </select>
+        </div>
+
+        <button type="submit" class="submit-btn">إرسال الطلب عبر واتساب</button>
+    </form>
+</div>
+<style>
+    /* الخطوط والألوان العامة */
+    @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600&family=Playfair+Display:wght@700&display=swap');
+    
+    body { 
+        background-color: #faf8f5; 
+        font-family: 'Cairo', sans-serif; 
+        color: #333; 
+        display: flex; 
+        justify-content: center; 
+        align-items: center; 
+        min-height: 100vh; 
+        margin: 0;
+    }
+
+    /* حاوية الطلب */
+    .checkout-container { 
+        width: 90%; 
+        max-width: 500px; 
+        background: #fff; 
+        padding: 40px; 
+        border-radius: 15px; 
+        border: 1px solid #e0d8c3;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.08); 
+    }
+
+    /* العنوان */
+    h2 { 
+        font-family: 'Playfair Display', serif; 
+        color: #2d2219; 
+        text-align: center; 
+        margin-bottom: 30px; 
+        border-bottom: 2px solid #a88a44; 
+        display: inline-block; 
+        width: 100%; 
+        padding-bottom: 10px;
+    }
+
+    /* الحقول */
+    .form-group { margin-bottom: 20px; }
+    label { font-weight: 600; color: #2d2219; margin-bottom: 8px; display: block; }
+    
+    input, select, textarea { 
+        width: 100%; 
+        padding: 12px; 
+        border: 1px solid #dcdcdc; 
+        border-radius: 8px; 
+        font-size: 1rem; 
+        transition: 0.3s;
+    }
+    
+    /* تأثير التركيز عند الكتابة */
+    input:focus, textarea:focus, select:focus { 
+        border-color: #a88a44; 
+        outline: none; 
+        box-shadow: 0 0 8px rgba(168, 138, 68, 0.2); 
+    }
+
+    /* زر الإرسال الفخم */
+    .submit-btn { 
+        width: 100%; 
+        padding: 15px; 
+        background: #2d2219; 
+        color: #a88a44; 
+        border: 2px solid #a88a44; 
+        border-radius: 8px; 
+        font-size: 1.1rem; 
+        font-weight: 700; 
+        cursor: pointer; 
+        transition: 0.4s; 
+        margin-top: 10px;
+    }
+    
+    .submit-btn:hover { 
+        background: #a88a44; 
+        color: #fff; 
+    }
+</style>

@@ -1,0 +1,112 @@
+/* LEIL dark/light theme support */
+body {
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+.theme-toggle-btn {
+  position: fixed;
+  top: 18px;
+  right: 18px;
+  z-index: 9999;
+  padding: 10px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  background-color: rgba(255, 255, 255, 0.92);
+  color: #1a1a1a;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 700;
+  transition: transform 0.2s ease, background-color 0.25s ease, border-color 0.25s ease;
+}
+
+.theme-toggle-btn:hover {
+  transform: translateY(-2px);
+}
+
+body.dark {
+  background-color: #080808 !important;
+  color: #f3f3f3 !important;
+}
+
+body.dark a {
+  color: #f3f3f3 !important;
+}
+
+body.dark .navbar,
+body.dark .hero-section,
+body.dark .shop-banner,
+body.dark .page-header,
+body.dark .men-header,
+body.dark .about-banner,
+body.dark .checkout-container,
+body.dark .content-container,
+body.dark .category-card,
+body.dark .product-card,
+body.dark .filter-section,
+body.dark .sidebar,
+body.dark .product-info,
+body.dark .collection-grid > *,
+body.dark .men-card,
+body.dark .shop-container {
+  background-color: #111111 !important;
+  border-color: #262626 !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5) !important;
+}
+
+body.dark .navbar {
+  border-bottom-color: #262626 !important;
+}
+
+body.dark .brand-name,
+body.dark .section-title,
+body.dark .shop-banner h1,
+body.dark .shop-banner p,
+body.dark .product-title,
+body.dark .product-category,
+body.dark .results-count,
+body.dark .product-price,
+body.dark .price,
+body.dark h1,
+body.dark h2,
+body.dark h3,
+body.dark p,
+body.dark label,
+body.dark .checkout-container label,
+body.dark .checkout-container input,
+body.dark .checkout-container select,
+body.dark .checkout-container textarea,
+body.dark .hero-subtitle {
+  color: #e6e6e6 !important;
+}
+
+body.dark .hero-section,
+body.dark .page-header,
+body.dark .men-header,
+body.dark .about-banner,
+body.dark .checkout-container,
+body.dark .content-container,
+body.dark .category-card,
+body.dark .product-card,
+body.dark .filter-section,
+body.dark .sidebar,
+body.dark .product-info,
+body.dark .men-card {
+  background-color: #171717 !important;
+}
+
+body.dark .cta-button,
+body.dark .shop-btn,
+body.dark .submit-btn,
+body.dark .insta-btn {
+  background-color: #a88a44 !important;
+  color: #111111 !important;
+  border-color: #c5a45b !important;
+}
+
+body.dark input,
+body.dark select,
+body.dark textarea {
+  background-color: #1d1d1d !important;
+  color: #f2f2f2 !important;
+  border-color: #333333 !important;
+}
